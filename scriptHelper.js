@@ -16,8 +16,17 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
    */
 }
 
-function validateInput(testInput) {
-   
+function validateInput(input) {
+   window.addEventListener("click", function(){
+    //should take in a string as a parameter and return 'empty', 'not a number', or 'is a number' as appropriate
+    if(typeof input == 'number'){
+        return "Is a Number"
+    } else if(typeof input == 'string'){
+        return "Not a Number"
+    } else{
+        return "Empty"
+    }
+   })
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
