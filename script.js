@@ -1,8 +1,10 @@
 // Write your JavaScript code here!
 let input = document.getElementsByClassName('formField');
-// let copilotName = document.getElementsByName('copilotName');
-// let fuelLevel = document.getElementsByName('fuelLevel');
-// let cargoMass = document.getElementsByName('cargoMass');
+
+let pilotName = document.getElementsByName('pilotName');
+let copilotName = document.getElementsByName('copilotName');
+let fuelLevel = document.getElementsByName('fuelLevel');
+let cargoMass = document.getElementsByName('cargoMass');
 
 window.addEventListener("load", function() {
 
@@ -20,7 +22,17 @@ window.addEventListener("load", function() {
 });
 
 window.addEventListener('submit', function(event) {
-    //if (input !== '' ){
-    alert('All fields are required!');
-    event.preventDefault();
+    if(validateInput(pilotName) === "Empty"){
+        alert('All fields are required!');
+    };
+    if(validateInput(copilotName) === "Empty"){
+        alert('All fields are required!');
+    };
+    if (validateInput(fuelLevel) === "Empty"){
+        alert('All fields are required!');
+    };
+    if(validateInput(cargoMass) === "Empty"){
+        alert('All fields are required!');
+    };
+    //alert('All fields are required!');
 });
