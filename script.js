@@ -21,18 +21,20 @@ window.addEventListener("load", function() {
    
 });
 
-window.addEventListener('submit', function(event) {
-    if(validateInput(pilotName) === "Empty"){
+document.addEventListener('submit', function(event) {
+    console.log('I made it here')
+    if((pilotName) === ""){
         alert('All fields are required!');
     };
-    if(validateInput(copilotName) === "Empty"){
+    if((copilotName) === ""){
         alert('All fields are required!');
     };
-    if (validateInput(fuelLevel) === "Empty"){
+    if ((fuelLevel) === ""){
         alert('All fields are required!');
     };
-    if(validateInput(cargoMass) === "Empty"){
+    if((cargoMass) === ""){
         alert('All fields are required!');
     };
-    //alert('All fields are required!');
+    console.log(pilotName)
+    alert("Co pilotname: " + copilotName + "<----");
 });
