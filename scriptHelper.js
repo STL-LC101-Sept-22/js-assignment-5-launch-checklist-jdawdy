@@ -47,9 +47,9 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
    //if shuttle is ready to launch change text of launchStatus to green and display "Shuttle is ready for launch"
    let launchList = createLaunchListObj(pilot, copilot, fuelLevel, cargoLevel);
    let areInputsValid = true;
-   inputErrorMessage = '';
+   let inputErrorMessage = '';
 
-   if(validateInput(pilot) = "Empty" || validateInput(copilot) = "Empty" || validateInput(Number(fuelLevel)) = "Empty" || validateInput(Number(cargoLevel)) = "Empty"){
+   if(validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(Number(fuelLevel)) === "Empty" || validateInput(Number(cargoLevel)) === "Empty"){
     areInputsValid = false;
     inputErrorMessage += "All fields are required";
    } 
@@ -114,9 +114,10 @@ function createLaunchListObj(pilotInput, copilotInput, fuelLevelInput, cargoLeve
 async function myFetch() {
     let planetsReturned;
 
-    planetsReturned = await fetch().then( function(response) {
+    planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+        return response.json();
         });
-
+    console.log(planetsReturned)
     return planetsReturned;
 }
 
