@@ -1,9 +1,9 @@
 // Write your JavaScript code here!
 
-const { formSubmission, myFetch } = require("./scriptHelper");
+//const { formSubmission, myFetch } = require("./scriptHelper");
 
 //let input = document.getElementsByClassName('formField');
-let input = document.querySelector('form')
+// let input = document.querySelector('form')
 // let pilot = document.getElementsByName('pilotName');
 // let copilot = document.getElementsByName('copilotName');
 // let fuelLevel = document.getElementsByName('fuelLevel');
@@ -12,34 +12,34 @@ let input = document.querySelector('form')
 
 window.addEventListener("load", function() {
 
-   let listedPlanets;
-   // Set listedPlanetsResponse equal to the value returned by calling myFetch()
-   let listedPlanetsResponse;
-   listedPlanetsResponse.then(function (result) {
-       listedPlanets = result;
-       console.log(listedPlanets);
-   }).then(function () {
-       console.log(listedPlanets);
-       // Below this comment call the appropriate helper functions to pick a planet from the list of planets and add that information to your destination.
-   })
+    let listedPlanets;
+    let listedPlanetsResponse = myFetch();
+    listedPlanetsResponse.then(function (result) {
+        listedPlanets = result;
+        console.log(listedPlanets);
+    }).then(function () {
+        console.log(listedPlanets);
+        let selectedPlanet = pickPlanet(listedPlanets);
+        addDestinationInfo(document, selectedPlanet.name, selectedPlanet.diameter, selectedPlanet.star, selectedPlanet.distance, selectedPlanet.moons, selectedPlanet.image);  
+    })
    let list = document.getElementById("faultyItems");
 
 
    list.style.visibility = "hidden";
    let form = document.querySelector("form");
-   
-   input.addEventListener('submit', function(event) {
-       let pilotInput = document.querySelector("input[name='pilotName']").value;
-       let copilotInput = document.querySelector("input[name='copilotName']").value;
-       let fuelLevelInput = document.querySelector("input[name='fuelLevel']").value;
-       let cargoLevelInput = document.querySelector("input[name='cargoMass']").value;
-       
-       let pilot = pilotInput.value;
-       let copilot = copilotInput.value;
-       let fuelLevel = Number(fuelInput.value);
-       let cargoLevel = Number(cargoInput.value);
 
-       formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
+   form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    let pilotInput = document.querySelector("input[name=pilotName]");
+    let pilot = pilotInput.value;
+    let copilotInput = document.querySelector("input[name=copilotName]");
+    let copilot = copilotInput.value;
+    let fuelInput = document.querySelector("input[name=fuelLevel]");
+    let fuelLevel = Number(fuelInput.value);
+    let cargoInput = document.querySelector("input[name=cargoMass]");
+    let cargoLevel = Number(cargoInput.value);
+
+    formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
    });
    
 });
