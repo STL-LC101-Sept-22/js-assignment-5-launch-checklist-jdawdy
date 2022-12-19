@@ -11,15 +11,7 @@ let input = document.querySelector('form')
 //querysel
 
 window.addEventListener("load", function() {
-    console.log(listedPlanets);
-    let input = document.querySelector('form')
-    input.addEventListener('submit', function(event) {
-        let pilot = document.querySelector("input[name='pilotName']").value;
-        let copilot = document.querySelector("input[name='copilotName']").value;
-        let fuelLevel = document.querySelector("input[name='fuelLevel']").value;
-        let cargoLevel = document.querySelector("input[name='cargoMass'").value;
-        formSubmission()
-    });
+
    let listedPlanets;
    // Set listedPlanetsResponse equal to the value returned by calling myFetch()
    let listedPlanetsResponse;
@@ -30,6 +22,25 @@ window.addEventListener("load", function() {
        console.log(listedPlanets);
        // Below this comment call the appropriate helper functions to pick a planet from the list of planets and add that information to your destination.
    })
+   let list = document.getElementById("faultyItems");
+
+
+   list.style.visibility = "hidden";
+   let form = document.querySelector("form");
+   
+   input.addEventListener('submit', function(event) {
+       let pilotInput = document.querySelector("input[name='pilotName']").value;
+       let copilotInput = document.querySelector("input[name='copilotName']").value;
+       let fuelLevelInput = document.querySelector("input[name='fuelLevel']").value;
+       let cargoLevelInput = document.querySelector("input[name='cargoMass']").value;
+       
+       let pilot = pilotInput.value;
+       let copilot = copilotInput.value;
+       let fuelLevel = Number(fuelInput.value);
+       let cargoLevel = Number(cargoInput.value);
+
+       formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
+   });
    
 });
 
